@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --gold: #cba527;
+  --green: #009966;
+  --text: #333;
+  --muted: #777;
+  --bg: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 8%;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--green);
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 60px 10%;
+}
+
+.hero img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  color: var(--text);
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+/* ===== TABS ===== */
+.tabs {
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  border-bottom: 1px solid #ddd;
+  max-width: 600px;
+}
+
+.tabs a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  padding-bottom: 8px;
+  transition: 0.3s;
+}
+
+.tabs a.active {
+  color: var(--gold);
+  border-bottom: 3px solid var(--gold);
+}
+
+/* ===== PROJECTS GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px 10%;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  background: #fafafa;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 12px 0 4px;
+}
+
+.card a {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  background: #fafafa;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
