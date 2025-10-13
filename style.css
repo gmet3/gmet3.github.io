@@ -5,114 +5,136 @@
   --green: #009966;
   --text: #222;
   --muted: #666;
-  --bg: #fff;
+  --bg: #fafafa;
 }
 
-/* RESET */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
+  line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
-.topbar {
+/* ===== NAVBAR ===== */
+nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 12px 8%;
-  border-bottom: 1px solid #eee;
+  align-items: center;
   background: #fff;
+  padding: 14px 8%;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
-.logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-nav.center {
+nav ul {
+  list-style: none;
   display: flex;
-  gap: 40px;
+  gap: 30px;
 }
 
-nav.center a {
-  color: var(--text);
+nav a {
   text-decoration: none;
+  color: var(--text);
   font-weight: 500;
   transition: 0.3s;
 }
 
-nav.center a.active {
-  color: var(--green);
-  font-weight: 600;
-}
-
-nav.center a:hover {
+nav a:hover,
+nav a.active {
   color: var(--green);
 }
 
-.right .btn-outline {
+.btn {
   border: 2px solid var(--gold);
   color: var(--gold);
   padding: 6px 14px;
-  border-radius: 6px;
-  font-weight: 500;
+  border-radius: 8px;
   text-decoration: none;
+  font-weight: 600;
   transition: 0.3s;
 }
 
-.right .btn-outline:hover {
+.btn:hover {
   background: var(--gold);
   color: #fff;
 }
 
-/* ===== SHOP SECTION ===== */
-.shop {
+/* ===== HERO ===== */
+.hero {
   text-align: center;
   padding: 60px 10%;
 }
 
-.shop h1 {
-  font-size: 2rem;
-  color: var(--text);
+.hero img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
   margin-bottom: 10px;
+  color: var(--text);
 }
 
-.shop .subtitle {
+.hero p {
   color: var(--muted);
-  margin-bottom: 50px;
+  font-size: 1rem;
 }
 
-.cards {
+/* ===== TABS ===== */
+.tabs {
+  margin: 40px auto 20px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 50px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  max-width: 500px;
+}
+
+.tabs a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.tabs a.active {
+  color: var(--gold);
+  border-bottom: 3px solid var(--gold);
+}
+
+/* ===== GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 40px 10%;
 }
 
 .card {
   background: #fff;
   border-radius: 14px;
-  width: 280px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .card img {
@@ -121,46 +143,32 @@ nav.center a:hover {
   object-fit: cover;
 }
 
-.card-body {
-  padding: 20px;
-}
-
-.card-body h3 {
+.card h3 {
+  margin: 15px 0 5px;
   font-size: 1.1rem;
-  margin-bottom: 4px;
+  color: var(--text);
 }
 
-.card-body .price {
-  color: var(--gold);
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.card-body .desc {
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-bottom: 14px;
-}
-
-.btn.small {
-  background: var(--green);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 6px;
+.card a {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--green);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: 0.3s;
 }
 
-.btn.small:hover {
-  background: var(--gold);
+.card a:hover {
+  color: var(--gold);
 }
 
 /* ===== FOOTER ===== */
 footer {
-  margin-top: 60px;
+  text-align: center;
   padding: 25px;
-  font-size: 0.9rem;
+  background: #fff;
   color: var(--muted);
-  background: #fafafa;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  margin-top: 40px;
 }
