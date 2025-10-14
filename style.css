@@ -172,3 +172,71 @@ footer {
   font-size: 0.9rem;
   margin-top: 40px;
 }
+/* ===== SHOP GRID STYLE ===== */
+.shop {
+  padding: 60px 8%;
+  text-align: center;
+}
+
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.theme-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+  overflow: hidden;
+}
+
+.theme-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.theme-card img {
+  width: 100%;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.theme-info {
+  padding: 16px;
+  text-align: left;
+}
+
+.theme-name {
+  display: block;
+  color: #009966;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+
+.theme-name:hover {
+  color: #cba527;
+}
+
+.theme-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.theme-meta .price {
+  color: #000;
+  font-weight: 700;
+}
+
+.theme-info p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
