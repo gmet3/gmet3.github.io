@@ -3,29 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gmet3 — Overview</title>
+  <title>Overview – Gmet3</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <nav>
-    <div><img src="assets/logo.png" alt="Gmet3 Logo" width="48" style="border-radius:50%;vertical-align:middle;"></div>
-    <ul>
-      <li><a href="index.html" class="active">Overview</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div>
-      <a href="https://github.com/gmet3" target="_blank" class="btn">Follow</a>
+  <!-- ===== HEADER ===== -->
+  <header class="topbar">
+    <div class="left">
+      <img src="assets/logo.png" alt="Gmet3 Logo" class="logo">
     </div>
-  </nav>
+    <nav class="center">
+      <a href="index.html" class="active">Overview</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="right">
+      <a href="https://github.com/gmet3" target="_blank" class="btn-outline">Follow</a>
+    </div>
+  </header>
 
+  <!-- ===== HERO ===== -->
   <section class="hero">
     <img src="assets/logo.png" alt="Logo">
     <h1>Gmet3</h1>
     <p>Just a person who likes to build things.<br>
-    I mostly work in UI Development, making the web faster and better-looking,<br>
-    and building creative PHP scripts and portfolio templates.</p>
+      I mostly work in UI Development, making the web faster and better-looking,<br>
+      and building creative PHP scripts and portfolio templates.</p>
   </section>
 
   <div class="tabs">
@@ -35,26 +39,26 @@
 
   <div class="grid">
     <div class="card">
-      <img src="assets/project1.jpg" alt="Gmet3 V1">
+      <img src="assets/v1.jpg" alt="Gmet3 V1">
       <h3>Gmet3 V1 – Classic</h3>
       <a href="https://gmet3.com/demo/v1" target="_blank">View Demo →</a>
     </div>
 
     <div class="card">
-      <img src="assets/project2.jpg" alt="Gmet3 V2">
+      <img src="assets/v2.jpg" alt="Gmet3 V2">
       <h3>Gmet3 V2 – vCard</h3>
       <a href="https://gmet3.com/demo/v2" target="_blank">View Demo →</a>
     </div>
 
     <div class="card">
-      <img src="assets/project3.jpg" alt="Gmet3 V3">
+      <img src="assets/v3.jpg" alt="Gmet3 V3">
       <h3>Gmet3 V3 – Portfolio</h3>
       <a href="https://gmet3.com/demo/v3" target="_blank">View Demo →</a>
     </div>
   </div>
 
   <footer>
-    © <span id="year"></span> Gmet3. All rights reserved.
+    © <span id="year"></span> Gmet3 — All rights reserved.
   </footer>
 
   <script>

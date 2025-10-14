@@ -6,13 +6,15 @@
   --text: #222;
   --muted: #666;
   --bg: #fafafa;
+  --white: #fff;
 }
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -21,57 +23,63 @@ body {
   line-height: 1.6;
 }
 
-/* ===== NAVBAR ===== */
-nav {
+/* ===== HEADER ===== */
+.topbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: #fff;
+  justify-content: space-between;
+  background: var(--white);
   padding: 14px 8%;
   border-bottom: 1px solid #eee;
-  box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
-nav ul {
-  list-style: none;
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+nav.center {
   display: flex;
-  gap: 30px;
+  gap: 40px;
 }
 
-nav a {
+nav.center a {
   text-decoration: none;
   color: var(--text);
   font-weight: 500;
   transition: 0.3s;
 }
 
-nav a:hover,
-nav a.active {
+nav.center a:hover,
+nav.center a.active {
   color: var(--green);
 }
 
-.btn {
+.btn-outline {
   border: 2px solid var(--gold);
   color: var(--gold);
   padding: 6px 14px;
-  border-radius: 8px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s;
 }
 
-.btn:hover {
+.btn-outline:hover {
   background: var(--gold);
   color: #fff;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO (used in index.html) ===== */
 .hero {
   text-align: center;
-  padding: 60px 10%;
+  padding: 80px 10%;
 }
 
 .hero img {
@@ -79,26 +87,27 @@ nav a.active {
   height: 120px;
   border-radius: 50%;
   border: 3px solid var(--gold);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .hero h1 {
   font-size: 2.2rem;
-  margin-bottom: 10px;
   color: var(--text);
+  margin-bottom: 10px;
 }
 
 .hero p {
   color: var(--muted);
-  font-size: 1rem;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
-/* ===== TABS ===== */
+/* ===== TABS (index) ===== */
 .tabs {
   margin: 40px auto 20px;
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 40px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
   max-width: 500px;
@@ -116,7 +125,7 @@ nav a.active {
   border-bottom: 3px solid var(--gold);
 }
 
-/* ===== GRID ===== */
+/* ===== GRID (index) ===== */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -125,7 +134,7 @@ nav a.active {
 }
 
 .card {
-  background: #fff;
+  background: var(--white);
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
@@ -162,15 +171,96 @@ nav a.active {
   color: var(--gold);
 }
 
+/* ===== SHOP ===== */
+.shop {
+  text-align: center;
+  padding: 60px 10%;
+}
+
+.shop h1 {
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.shop .subtitle {
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card-body {
+  padding: 18px;
+  text-align: left;
+}
+
+.price {
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+.btn.small {
+  background: var(--green);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn.small:hover {
+  background: var(--gold);
+}
+
+/* ===== CONTACT PAGE ===== */
+.contact {
+  text-align: center;
+  padding: 80px 10%;
+}
+
+.contact h1 {
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.contact p {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.contact a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  color: var(--gold);
+}
+
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
   padding: 25px;
-  background: #fff;
+  background: var(--white);
   color: var(--muted);
   border-top: 1px solid #eee;
   font-size: 0.9rem;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 /* ===== SHOP GRID STYLE ===== */
 .shop {
