@@ -1,281 +1,213 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>معلومات السكربت — اسم سكربتك</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>PicShot / Gmet3 — Product Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Professional portfolio & gallery system — fast, elegant, mobile-ready." />
+  <meta name="author" content="Gmet3 Developer" />
+  <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+
+  <!-- Styles -->
+  <link rel="preload" as="style" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
   <style>
-    :root{
-      --bg:#f6f7fb;
-      --card:#ffffff;
-      --accent:#0066cc;
-      --muted:#6b7280;
-      --radius:14px;
-      --container:1100px;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fb;
+      color: #222;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:'Tajawal',sans-serif;
-      background:var(--bg);
-      color:#222;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
+    header {
+      background: #1e1e2f;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 6%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header img {
+      height: 40px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
 
-    .wrap{max-width:var(--container);margin:28px auto;padding:0 20px}
-
-    /* header / hero */
-    .hero{
-      background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00));
-      border-radius:18px;
-      padding:34px;
-      display:flex;
-      gap:24px;
-      align-items:center;
+    .hero {
+      background: linear-gradient(180deg, #222, #333);
+      color: #fff;
+      padding: 80px 10%;
+      text-align: center;
     }
-    .brand{
-      display:flex;
-      gap:18px;
-      align-items:center;
+    .hero h1 {
+      font-size: 38px;
+      margin: 0;
     }
-    .logo{
-      width:96px;height:96px;border-radius:12px;flex:0 0 96px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);box-shadow:0 6px 18px rgba(0,0,0,.06)
+    .hero p {
+      color: #ccc;
+      font-size: 18px;
     }
-    .hero h1{margin:0;font-size:28px}
-    .hero p{margin:6px 0;color:var(--muted)}
+    .hero .price {
+      margin-top: 15px;
+      font-size: 20px;
+      color: #cba527;
+      font-weight: 600;
+    }
+    .hero .buy-btn {
+      background: #cba527;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      margin-top: 12px;
+      cursor: pointer;
+    }
 
-    .buy-box{margin-left:auto;text-align:center}
-    .price{font-weight:700;font-size:18px;color:#111}
-    .buy-btn{display:inline-block;margin-top:8px;background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(0,102,204,0.14)}
-    .meta small{color:var(--muted)}
+    .section {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .section h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .split img {
+      width: 100%;
+      border-radius: 14px;
+    }
+    .split p {
+      line-height: 1.7;
+      color: #444;
+    }
+    @media(max-width: 768px){
+      .split { grid-template-columns: 1fr; }
+      .hero { padding: 60px 20px; }
+    }
 
-    /* grid */
-    .grid{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px}
-    @media(max-width:880px){.grid{grid-template-columns:1fr;}.buy-box{margin-left:0;margin-top:12px}}
+    .notice {
+      text-align: center;
+      background: #fff4c2;
+      padding: 16px;
+      border-radius: 10px;
+      margin: 40px auto;
+      max-width: 900px;
+      color: #7a5e00;
+      font-weight: 500;
+    }
 
-    /* card */
-    .card{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 20px rgba(15,23,42,0.04)}
-    h2{margin:0 0 12px 0;color:#333}
-
-    /* features list */
-    ul.features{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    .feat{display:flex;gap:10px;align-items:flex-start}
-    .feat i{width:34px;height:34px;border-radius:8px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700}
-    @media(max-width:600px){ul.features{grid-template-columns:1fr}}
-
-    /* screenshots */
-    .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .shots img{width:100%;height:120px;object-fit:cover;border-radius:10px;cursor:pointer}
-    @media(max-width:900px){.shots{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:520px){.shots{grid-template-columns:1fr}}
-
-    /* install steps */
-    ol.install{padding-left:18px;margin:0 0 0 0}
-
-    /* support form */
-    .form-row{display:flex;gap:10px}
-    .form-row input,.form-row textarea{flex:1;padding:10px;border-radius:8px;border:1px solid #e6e9ef}
-    .form-row textarea{min-height:110px;resize:vertical}
-    .submit{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;border:none;cursor:pointer;margin-top:10px}
-
-    /* changelog accordion */
-    .acc-item{border-top:1px dashed #eee;padding:10px 0}
-    .acc-head{cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-    .acc-body{display:none;padding-top:8px;color:var(--muted)}
-
-    footer{margin:26px 0;text-align:center;color:var(--muted);font-size:13px}
-
-    /* small helpers */
-    .muted{color:var(--muted);font-size:14px}
-    .badge{display:inline-block;background:#eef6ff;color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:600}
-    .specs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .spec{background:#fbfdff;padding:10px;border-radius:8px;border:1px solid #f0f4ff;color:var(--muted)}
+    footer {
+      background: #1e1e2f;
+      color: #ccc;
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <!-- HERO -->
-    <div class="hero card">
-      <div class="brand">
-        <div class="logo">LOGO</div>
-        <div>
-          <h1>اسم السكربت الخاص بك</h1>
-          <p class="muted">وصف موجز من سطر واحد يوضح وظيفة السكربت (مثلاً: معرض صور احترافي لقوائم وعروض العملاء).</p>
-          <div class="meta"><small>الإصدار الحالي: <strong>1.0.0</strong> • الترخيص: <strong>مجاناً / مدفوع</strong></small></div>
-        </div>
-      </div>
 
-      <div class="buy-box">
-        <div class="price">السعر: <strong>35.00€</strong></div>
-        <a class="buy-btn" href="#" onclick="alert('جهَّز بوابة الدفع أو ضع رابط الشراء هنا');return false;">اشتري الآن</a>
-        <div style="margin-top:8px" class="muted">تسليم مباشر بعد الدفع • دعم فني 30 يوم</div>
-      </div>
-    </div>
-
-    <!-- MAIN GRID -->
-    <div class="grid">
-      <!-- LEFT: محتوى تفصيلي -->
-      <div>
-        <div class="card">
-          <h2>ما هو هذا السكربت؟</h2>
-          <p class="muted">سطر أو اثنان يشرحان الفكرة العامة والهدف من السكربت، لمن هو موجه، وما الذي يميّزه عن غيره. اذكر حالات الاستخدام الأساسية هنا.</p>
-
-          <hr style="margin:16px 0;border:none;border-top:1px solid #f0f0f0">
-
-          <h2>المميزات الرئيسية</h2>
-          <ul class="features" style="margin-top:12px">
-            <li class="feat"><i>✓</i><div><strong>واجهة إدارة بسيطة</strong><div class="muted">لوحة تحكم لإدارة الصور والتصنيفات والمستخدمين.</div></div></li>
-            <li class="feat"><i>⚡</i><div><strong>أداء سريع</strong><div class="muted">تحميل صور مظلل وخزن مؤقت لتجربة أسرع.</div></div></li>
-            <li class="feat"><i>🔒</i><div><strong>حماية وامتيازات</strong><div class="muted">صلاحيات متعددة للمستخدمين والمدراء.</div></div></li>
-            <li class="feat"><i>🌐</i><div><strong>دعم لغات</strong><div class="muted">قابل للتعريب ويدعم العربية والإنجليزية.</div></div></li>
-          </ul>
-
-          <hr style="margin:18px 0;border:none;border-top:1px solid #f0f0f0">
-
-          <h2>المتطلبات</h2>
-          <div class="specs" style="margin-top:10px">
-            <div class="spec"><strong>خادم</strong><div class="muted">PHP 8.0+ ، Apache/Nginx</div></div>
-            <div class="spec"><strong>قاعدة بيانات</strong><div class="muted">MySQL 5.7+ / MariaDB</div></div>
-            <div class="spec"><strong>امتدادات</strong><div class="muted">GD أو Imagick, PDO</div></div>
-            <div class="spec"><strong>مكان التخزين</strong><div class="muted">مجلد uploads/ مع صلاحيات 755+</div></div>
-          </div>
-
-          <hr style="margin:18px 0;border:none;border-top:1px solid #f0f0f0">
-
-          <h2>خطوات التثبيت السريعة</h2>
-          <ol class="install">
-            <li>رفع الملفات إلى الخادم داخل المجلد المطلوب.</li>
-            <li>إنشاء قاعدة بيانات، وتعديل ملف الإعدادات `config.php` أو `.env` مع بيانات الاتصال.</li>
-            <li>استيراد ملف SQL الموجود في `database/seed.sql` (إن وُجد) أو تشغيل سكربت التهيئة.</li>
-            <li>تغيير صلاحيات مجلد `uploads/` و `storage/` للسماح بالكتابة.</li>
-            <li>تسجيل الدخول إلى لوحة الإدارة عبر `/admin` واستخدم بيانات admin الافتراضية (غيرها فوراً).</li>
-          </ol>
-        </div>
-
-        <!-- screenshots -->
-        <div class="card" style="margin-top:18px">
-          <h2>لقطات شاشة</h2>
-          <p class="muted">اضغط على الصورة لفتحها بحجم أكبر.</p>
-          <div class="shots" style="margin-top:12px">
-            <img src="assets/img/shot1.jpg" alt="لقطة 1" onclick="openModal(this.src)">
-            <img src="assets/img/shot2.jpg" alt="لقطة 2" onclick="openModal(this.src)">
-            <img src="assets/img/shot3.jpg" alt="لقطة 3" onclick="openModal(this.src)">
-          </div>
-        </div>
-
-        <!-- changelog -->
-        <div class="card" style="margin-top:18px">
-          <h2>سجل التغييرات</h2>
-
-          <div class="acc-item">
-            <div class="acc-head" onclick="toggleAcc(event)">
-              <div><strong>v1.0.0</strong> — 2025-10-01</div>
-              <div class="muted">انقر للعرض</div>
-            </div>
-            <div class="acc-body">
-              <ul style="margin:6px 0 0 0;padding-left:18px">
-                <li>الإصدار الأول: بناء CRUD للصور والتصنيفات والمستخدمين.</li>
-                <li>نظام رفع صور مع تصغير أوتوماتيكي وإنشاء ثنائيات (thumbnails).</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="acc-item">
-            <div class="acc-head" onclick="toggleAcc(event)">
-              <div><strong>v0.9.0</strong> — تجريبي</div>
-              <div class="muted">انقر للعرض</div>
-            </div>
-            <div class="acc-body">
-              <ul style="margin:6px 0 0 0;padding-left:18px">
-                <li>تحسينات في واجهة المستخدم وأداء الاستعلامات.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT: صندوق جانبي -->
-      <aside>
-        <div class="card">
-          <h2>معلومات سريعة</h2>
-          <p class="muted">نوع الترخيص</p>
-          <div style="margin:8px 0"><span class="badge">ترخيص تجاري</span></div>
-
-          <div style="margin-top:12px">
-            <p class="muted"><strong>المطور:</strong> اسمك أو اسم الشركة</p>
-            <p class="muted"><strong>البريد للدعم:</strong> support@example.com</p>
-            <p class="muted"><strong>آخر تحديث:</strong> 2025-10-01</p>
-          </div>
-
-          <hr style="margin:12px 0;border:none;border-top:1px solid #f0f0f0">
-
-          <h2>روابط سريعة</h2>
-          <p style="margin:8px 0"><a href="#" style="color:var(--accent);text-decoration:none">صفحة توثيق</a></p>
-          <p style="margin:8px 0"><a href="#" style="color:var(--accent);text-decoration:none">ملف التغيير</a></p>
-          <p style="margin:8px 0"><a href="#" style="color:var(--accent);text-decoration:none">إصدار تجريبي (live demo)</a></p>
-        </div>
-
-        <div class="card" style="margin-top:18px">
-          <h2>تواصل مع الدعم</h2>
-          <form id="supportForm" onsubmit="submitSupport(event)">
-            <div style="margin-bottom:8px">
-              <input type="text" id="name" placeholder="الاسم" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee">
-            </div>
-            <div style="margin-bottom:8px">
-              <input type="email" id="email" placeholder="البريد الإلكتروني" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee">
-            </div>
-            <div style="margin-bottom:8px">
-              <textarea id="message" placeholder="أدخل رسالتك / المشكلة" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee"></textarea>
-            </div>
-            <button class="submit">أرسل</button>
-            <div id="supportMsg" style="margin-top:8px;color:var(--muted);font-size:13px"></div>
-          </form>
-        </div>
-      </aside>
-    </div>
-
-    <footer>
-      © 2025 اسم شركتك — جميع الحقوق محفوظة. | صفحة معلومات السكربت
-    </footer>
+<header>
+  <div class="logo">
+    <img src="assets/img/logo.png" alt="logo">
   </div>
+  <nav>
+    <a href="/">Overview</a>
+    <a href="/shop.html">Shop</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
 
-  <!-- image modal -->
-  <div id="imgModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;padding:20px;z-index:9999">
-    <img id="imgModalImg" src="" alt="" style="max-width:95%;max-height:90%;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,.6)">
+<section class="hero">
+  <h1>Gmet3 — Portfolio & Gallery Script</h1>
+  <p>Modern showcase system for professionals and artists.</p>
+  <div class="price">€35.00</div>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="3HZBMNK69VY5N">
+    <button class="buy-btn" name="submit">Buy Now</button>
+  </form>
+</section>
+
+<section class="notice">
+  After completing payment on PayPal, please wait until the download starts automatically.  
+  Do not close the window immediately.
+</section>
+
+<section class="section">
+  <div class="split">
+    <img src="assets/img/preview1.jpg" alt="preview">
+    <div>
+      <h2>What is Gmet3?</h2>
+      <p>
+        Gmet3 is a responsive, elegant and fast gallery system built for painters, craftsmen, and creative professionals.  
+        It allows you to showcase your work, receive client selections, and manage content with a clean admin interface.
+      </p>
+    </div>
   </div>
+</section>
 
-  <script>
-    function openModal(src){
-      var m = document.getElementById('imgModal');
-      var i = document.getElementById('imgModalImg');
-      i.src = src;
-      m.style.display = 'flex';
-      m.onclick = function(){ m.style.display='none'; i.src=''; }
-    }
+<section class="section">
+  <div class="split">
+    <div>
+      <h2>Carefully Designed</h2>
+      <p>
+        Every detail is hand-crafted: modern typography, smooth animations, and a professional golden accent tone.  
+        Fully optimized for both mobile and desktop screens.
+      </p>
+    </div>
+    <img src="assets/img/preview2.jpg" alt="design">
+  </div>
+</section>
 
-    function toggleAcc(e){
-      var head = e.currentTarget;
-      var body = head.nextElementSibling;
-      if(!body) return;
-      body.style.display = (body.style.display === 'block') ? 'none' : 'block';
-    }
+<section class="section">
+  <div class="split">
+    <img src="assets/img/preview3.jpg" alt="plugins">
+    <div>
+      <h2>Features</h2>
+      <ul>
+        <li>✔ Admin dashboard to manage posts, users, and comments</li>
+        <li>✔ AJAX likes & category filters</li>
+        <li>✔ Notifications when clients select images</li>
+        <li>✔ Support for YouTube, Vimeo, and local videos</li>
+        <li>✔ Fully responsive — built for phones first</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    function submitSupport(e){
-      e.preventDefault();
-      var name = document.getElementById('name').value.trim();
-      var email = document.getElementById('email').value.trim();
-      var msg = document.getElementById('message').value.trim();
-      var out = document.getElementById('supportMsg');
-      // هنا تابع إرسال عبر AJAX أو تغيير action الفورم ليتوافق مع endpoint لديك
-      out.innerText = '... جاري الإرسال (هذه تجربة واجهة فقط)';
-      setTimeout(function(){
-        out.innerText = 'تم إرسال الرسالة — سنتواصل معك قريباً.';
-        document.getElementById('supportForm').reset();
-      },1200);
-    }
-  </script>
+<section class="section" style="text-align:center">
+  <h2>Live Demo</h2>
+  <p>
+    Visit demo: <a href="#" onclick="return false;">https://gmet3-demo.com</a><br/>
+    Username: test • Password: 123456<br/>
+    Q2A Thread: <a href="#" onclick="return false;">(coming soon)</a>
+  </p>
+</section>
+
+<footer>
+  © 2025 Gmet3 / PicShot — All Rights Reserved.
+</footer>
+
 </body>
 </html>
