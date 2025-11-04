@@ -2,25 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Gmet3 / PicShot — Official Product Page</title>
+  <title>Gmet3 / PicShot — Product Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Professional portfolio & gallery system — fast, elegant, mobile-ready." />
   <meta name="author" content="Gmet3 Developer" />
   <link rel="icon" href="assets/img/favicon.png" type="image/png" />
-
-  <!-- Styles -->
-  <link rel="preload" as="style" href="assets/css/styles.css" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
+    *{box-sizing:border-box}
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #f8f9fb;
       color: #222;
     }
-
-    /* ===== Header ===== */
     header {
       background: #1e1e2f;
       color: #fff;
@@ -40,128 +36,145 @@
       text-decoration: none;
       margin: 0 12px;
       font-weight: 500;
-      transition: opacity .2s;
     }
     nav a:hover {
-      opacity: 0.8;
+      text-decoration: underline;
     }
 
-    /* ===== Hero Section ===== */
+    /* ====== HERO ====== */
     .hero {
-      background: linear-gradient(180deg, #1e1e2f, #2d2d3a);
+      background: linear-gradient(180deg, #1e1e2f, #333);
       color: #fff;
-      padding: 80px 10%;
       text-align: center;
+      padding: 80px 20px;
     }
-    .hero h1 {
-      font-size: 38px;
-      margin: 0 0 12px 0;
+    .hero h1 {font-size: 36px;margin:0 0 10px}
+    .hero p {color:#ccc;font-size:18px;margin-bottom:20px}
+    .price-card {
+      display:inline-block;
+      background:#fff;
+      color:#000;
+      border-radius:14px;
+      padding:25px 40px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      cursor:pointer;
+      transition:transform .2s, box-shadow .2s;
     }
-    .hero p {
-      color: #ccc;
-      font-size: 18px;
-      margin-bottom: 15px;
+    .price-card:hover {
+      transform:scale(1.05);
+      box-shadow:0 12px 25px rgba(0,0,0,0.15);
     }
-    .hero .price {
-      font-size: 22px;
-      color: #cba527;
-      font-weight: 600;
-      margin-top: 10px;
+    .price-card h2 {
+      margin:0;
+      font-size:38px;
+      color:#cba527;
     }
-    .hero .buy-btn {
-      display: inline-block;
-      background: #cba527;
-      color: #fff;
-      border: none;
-      padding: 14px 30px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 16px;
-      margin-top: 18px;
-      cursor: pointer;
-      transition: transform .2s, box-shadow .2s;
-      text-decoration: none;
-    }
-    .hero .buy-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(203,165,39,0.4);
+    .price-card small {
+      color:#555;
+      font-size:14px;
     }
 
-    /* ===== Section Layout ===== */
+    /* ====== SECTIONS ====== */
     .section {
       max-width: 1100px;
       margin: 60px auto;
       padding: 0 20px;
     }
-    .section h2 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 18px;
-      color: #222;
-    }
     .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: center;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:25px;
+      align-items:center;
     }
     .split img {
+      width:100%;
+      border-radius:14px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    }
+    @media(max-width:768px){.split{grid-template-columns:1fr}}
+
+    /* ====== GALLERY ====== */
+    .gallery-container {
+      max-width: 1000px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+    .gallery-title {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      color: #222;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .gallery-grid img {
       width: 100%;
+      height: 180px;
+      object-fit: cover;
       border-radius: 14px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .split p {
-      line-height: 1.7;
-      color: #444;
-      font-size: 16px;
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-    ul {
-      list-style: none;
-      padding-left: 0;
+    .image-viewer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
     }
-    ul li {
-      margin-bottom: 8px;
+    .image-viewer img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      animation: zoomIn .3s ease;
     }
-    ul li::before {
-      content: "✔ ";
-      color: #cba527;
+    .image-viewer .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: #fff;
+      color: #000;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      font-size: 22px;
       font-weight: bold;
-    }
-
-    @media(max-width: 768px){
-      .split { grid-template-columns: 1fr; }
-      .hero { padding: 60px 20px; }
-    }
-
-    /* ===== Notice ===== */
-    .notice {
       text-align: center;
-      background: #fff4c2;
-      padding: 16px;
-      border-radius: 10px;
-      margin: 40px auto;
-      max-width: 900px;
-      color: #7a5e00;
-      font-weight: 500;
+      line-height: 38px;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    .image-viewer .close-btn:hover {background:#f1f1f1}
+    @keyframes zoomIn {
+      from {transform: scale(0.8); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
     }
 
-    /* ===== Footer ===== */
     footer {
-      background: #1e1e2f;
-      color: #ccc;
-      text-align: center;
-      padding: 30px;
-      margin-top: 60px;
-      font-size: 14px;
+      background:#1e1e2f;
+      color:#ccc;
+      text-align:center;
+      padding:30px;
+      margin-top:80px;
     }
   </style>
 </head>
-
 <body>
 
 <header>
   <div class="logo">
-    <img src="assets/img/logo.png" alt="Gmet3 Logo">
+    <img src="assets/img/logo.png" alt="logo">
   </div>
   <nav>
     <a href="/">Overview</a>
@@ -170,21 +183,19 @@
   </nav>
 </header>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Gmet3 — Portfolio & Gallery Script</h1>
-  <p>Modern, responsive system for professionals and artists.</p>
-  <div class="price">€35.00</div>
-  <!-- ✅ زر الدفع عبر PayPal.me -->
-  <a class="buy-btn" href="https://paypal.me/abdelbank" target="_blank" rel="noopener noreferrer">
-    💳 Pay Now via PayPal
-  </a>
+  <p>Modern, elegant, and fast system for artists and professionals.</p>
+  
+  <!-- 🟡 بطاقة السعر القابلة للنقر -->
+  <div class="price-card" onclick="window.open('https://www.paypal.com/paypalme/abdelbank/35', '_blank')">
+    <h2>€35</h2>
+    <small>Click to pay securely with PayPal</small>
+  </div>
 </section>
 
-<section class="notice">
-  After completing your PayPal payment, please contact us to receive your licensed download link.  
-  <br>Do not close your PayPal window until confirmation appears.
-</section>
-
+<!-- ===== DESCRIPTION ===== -->
 <section class="section">
   <div class="split">
     <img src="assets/img/preview1.jpg" alt="preview">
@@ -203,8 +214,7 @@
     <div>
       <h2>Carefully Designed</h2>
       <p>
-        Every detail is crafted with care — modern typography, soft shadows, smooth animations, and a golden accent palette.
-        The layout automatically adapts to mobile and desktop screens.
+        Every detail is hand-crafted: golden tones, modern typography, and a mobile-first experience.
       </p>
     </div>
     <img src="assets/img/preview2.jpg" alt="design">
@@ -215,31 +225,70 @@
   <div class="split">
     <img src="assets/img/preview3.jpg" alt="plugins">
     <div>
-      <h2>Features</h2>
+      <h2>Main Features</h2>
       <ul>
-        <li>Admin dashboard to manage posts, users, and comments</li>
+        <li>Admin dashboard for posts, users, and comments</li>
         <li>AJAX likes & category filters</li>
         <li>Notifications when clients select artworks</li>
         <li>Support for YouTube, Vimeo, and local videos</li>
         <li>Responsive — built for phones first</li>
-        <li>Multi-language ready (Arabic, English, Spanish)</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="section" style="text-align:center">
-  <h2>Live Demo</h2>
-  <p>
-    Visit demo: <a href="#" onclick="return false;">https://gmet3-demo.com</a><br/>
-    Username: <b>test</b> — Password: <b>123456</b><br/>
-    Need a copy? <a href="https://paypal.me/abdelbank" target="_blank" style="color:#cba527;font-weight:600">Pay & Request Access</a>
-  </p>
-</section>
+<!-- ===== GALLERY (9 صور) ===== -->
+<div class="gallery-container">
+  <div class="gallery-title">📸 Sample Gallery</div>
+  <div class="gallery-grid">
+    <img src="assets/img/photo1.jpg" alt="photo1">
+    <img src="assets/img/photo2.jpg" alt="photo2">
+    <img src="assets/img/photo3.jpg" alt="photo3">
+    <img src="assets/img/photo4.jpg" alt="photo4">
+    <img src="assets/img/photo5.jpg" alt="photo5">
+    <img src="assets/img/photo6.jpg" alt="photo6">
+    <img src="assets/img/photo7.jpg" alt="photo7">
+    <img src="assets/img/photo8.jpg" alt="photo8">
+    <img src="assets/img/photo9.jpg" alt="photo9">
+  </div>
+</div>
+
+<!-- نافذة العرض -->
+<div class="image-viewer" id="imageViewer">
+  <span class="close-btn" onclick="closeViewer()">&times;</span>
+  <img id="viewerImage" src="" alt="">
+</div>
 
 <footer>
   © 2025 <b>Gmet3 / PicShot</b> — All Rights Reserved.
 </footer>
+
+<!-- ===== Scripts ===== -->
+<script>
+  // ✅ تكبير الصور
+  const imgs = document.querySelectorAll('.gallery-grid img');
+  const viewer = document.getElementById('imageViewer');
+  const viewerImg = document.getElementById('viewerImage');
+
+  imgs.forEach(img => {
+    img.addEventListener('click', () => {
+      viewer.style.display = 'flex';
+      viewerImg.src = img.src;
+    });
+  });
+
+  function closeViewer() {
+    viewer.style.display = 'none';
+    viewerImg.src = '';
+  }
+
+  viewer.addEventListener('click', e => {
+    if (e.target === viewer) closeViewer();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeViewer();
+  });
+</script>
 
 </body>
 </html>
