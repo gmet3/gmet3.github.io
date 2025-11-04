@@ -4,7 +4,132 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop – Gmet3 Themes</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {box-sizing:border-box;margin:0;padding:0;}
+    body {
+      font-family:'Poppins',sans-serif;
+      background:#f8f9fb;
+      color:#222;
+    }
+
+    /* ===== HEADER ===== */
+    .topbar {
+      background:#1e1e2f;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 6%;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .logo {
+      height:38px;
+    }
+    nav a {
+      color:#fff;
+      text-decoration:none;
+      margin:0 10px;
+      font-weight:500;
+      transition:opacity .3s;
+    }
+    nav a:hover,nav a.active {opacity:.7;}
+    .btn-outline {
+      border:1px solid #fff;
+      padding:6px 12px;
+      border-radius:8px;
+      color:#fff;
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    /* ===== SHOP ===== */
+    .shop {
+      max-width:1100px;
+      margin:60px auto;
+      padding:0 20px;
+      text-align:center;
+    }
+    .shop h1 {
+      font-size:28px;
+      margin-bottom:6px;
+    }
+    .shop .subtitle {
+      color:#777;
+      font-size:15px;
+      margin-bottom:30px;
+    }
+
+    /* ===== GRID ===== */
+    .themes-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:22px;
+      justify-items:center;
+    }
+
+    /* ===== CARD ===== */
+    .theme-card {
+      background:#fff;
+      border-radius:14px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);
+      overflow:hidden;
+      max-width:260px;
+      transition:transform .25s, box-shadow .25s;
+    }
+    .theme-card:hover {
+      transform:translateY(-6px);
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    }
+    .theme-card img {
+      width:100%;
+      height:150px;
+      object-fit:cover;
+    }
+    .theme-info {
+      padding:14px 16px 20px;
+    }
+    .theme-name {
+      font-weight:600;
+      font-size:15px;
+      color:#1e1e2f;
+      text-decoration:none;
+      display:block;
+      margin-bottom:6px;
+    }
+    .theme-meta {
+      display:flex;
+      justify-content:space-between;
+      font-size:13px;
+      color:#777;
+      margin-bottom:10px;
+    }
+    .price {
+      font-weight:600;
+      color:#cba527;
+    }
+    .theme-info p {
+      font-size:13px;
+      color:#555;
+      line-height:1.5;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align:center;
+      color:#777;
+      font-size:13px;
+      padding:30px 0;
+      margin-top:60px;
+      border-top:1px solid #e0e0e0;
+    }
+
+    @media(max-width:480px){
+      .theme-card img {height:140px;}
+    }
+  </style>
 </head>
 <body>
 
@@ -37,7 +162,7 @@
           <a href="portfolio.html" class="theme-name">Gmet3 V1 – Classic Theme</a>
           <div class="theme-meta">
             <span class="price">€29.00</span>
-            <span class="release">Released 2024/02/12</span>
+            <span class="release">2024/02/12</span>
           </div>
           <p>Clean, modern personal portfolio layout with admin panel.</p>
         </div>
@@ -49,7 +174,7 @@
           <a href="v2.html" class="theme-name">Gmet3 V2 – vCard Theme</a>
           <div class="theme-meta">
             <span class="price">€35.00</span>
-            <span class="release">Released 2024/07/05</span>
+            <span class="release">2024/07/05</span>
           </div>
           <p>Interactive vCard portfolio design with RTL and theme switcher.</p>
         </div>
@@ -61,7 +186,7 @@
           <a href="v3.html" class="theme-name">Gmet3 V3 – Portfolio Theme</a>
           <div class="theme-meta">
             <span class="price">€42.00</span>
-            <span class="release">Released 2025/01/08</span>
+            <span class="release">2025/01/08</span>
           </div>
           <p>Creative multi-theme system with integrated blog support.</p>
         </div>
