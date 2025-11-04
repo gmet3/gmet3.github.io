@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>PicShot / Gmet3 — Product Page</title>
+  <title>Gmet3 / PicShot — Official Product Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Professional portfolio & gallery system — fast, elegant, mobile-ready." />
   <meta name="author" content="Gmet3 Developer" />
@@ -19,6 +19,8 @@
       background: #f8f9fb;
       color: #222;
     }
+
+    /* ===== Header ===== */
     header {
       background: #1e1e2f;
       color: #fff;
@@ -38,43 +40,54 @@
       text-decoration: none;
       margin: 0 12px;
       font-weight: 500;
+      transition: opacity .2s;
     }
     nav a:hover {
-      text-decoration: underline;
+      opacity: 0.8;
     }
 
+    /* ===== Hero Section ===== */
     .hero {
-      background: linear-gradient(180deg, #222, #333);
+      background: linear-gradient(180deg, #1e1e2f, #2d2d3a);
       color: #fff;
       padding: 80px 10%;
       text-align: center;
     }
     .hero h1 {
       font-size: 38px;
-      margin: 0;
+      margin: 0 0 12px 0;
     }
     .hero p {
       color: #ccc;
       font-size: 18px;
+      margin-bottom: 15px;
     }
     .hero .price {
-      margin-top: 15px;
-      font-size: 20px;
+      font-size: 22px;
       color: #cba527;
       font-weight: 600;
+      margin-top: 10px;
     }
     .hero .buy-btn {
+      display: inline-block;
       background: #cba527;
       color: #fff;
       border: none;
-      padding: 12px 24px;
+      padding: 14px 30px;
       border-radius: 10px;
       font-weight: 600;
       font-size: 16px;
-      margin-top: 12px;
+      margin-top: 18px;
       cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+    }
+    .hero .buy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(203,165,39,0.4);
     }
 
+    /* ===== Section Layout ===== */
     .section {
       max-width: 1100px;
       margin: 60px auto;
@@ -84,26 +97,43 @@
       text-align: center;
       font-size: 28px;
       margin-bottom: 18px;
+      color: #222;
     }
     .split {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 24px;
       align-items: center;
     }
     .split img {
       width: 100%;
       border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     }
     .split p {
       line-height: 1.7;
       color: #444;
+      font-size: 16px;
     }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 8px;
+    }
+    ul li::before {
+      content: "✔ ";
+      color: #cba527;
+      font-weight: bold;
+    }
+
     @media(max-width: 768px){
       .split { grid-template-columns: 1fr; }
       .hero { padding: 60px 20px; }
     }
 
+    /* ===== Notice ===== */
     .notice {
       text-align: center;
       background: #fff4c2;
@@ -115,12 +145,14 @@
       font-weight: 500;
     }
 
+    /* ===== Footer ===== */
     footer {
       background: #1e1e2f;
       color: #ccc;
       text-align: center;
       padding: 30px;
       margin-top: 60px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -129,7 +161,7 @@
 
 <header>
   <div class="logo">
-    <img src="assets/img/logo.png" alt="logo">
+    <img src="assets/img/logo.png" alt="Gmet3 Logo">
   </div>
   <nav>
     <a href="/">Overview</a>
@@ -140,18 +172,17 @@
 
 <section class="hero">
   <h1>Gmet3 — Portfolio & Gallery Script</h1>
-  <p>Modern showcase system for professionals and artists.</p>
+  <p>Modern, responsive system for professionals and artists.</p>
   <div class="price">€35.00</div>
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="3HZBMNK69VY5N">
-    <button class="buy-btn" name="submit">Buy Now</button>
-  </form>
+  <!-- ✅ زر الدفع عبر PayPal.me -->
+  <a class="buy-btn" href="https://paypal.me/abdelbank" target="_blank" rel="noopener noreferrer">
+    💳 Pay Now via PayPal
+  </a>
 </section>
 
 <section class="notice">
-  After completing payment on PayPal, please wait until the download starts automatically.  
-  Do not close the window immediately.
+  After completing your PayPal payment, please contact us to receive your licensed download link.  
+  <br>Do not close your PayPal window until confirmation appears.
 </section>
 
 <section class="section">
@@ -161,7 +192,7 @@
       <h2>What is Gmet3?</h2>
       <p>
         Gmet3 is a responsive, elegant and fast gallery system built for painters, craftsmen, and creative professionals.  
-        It allows you to showcase your work, receive client selections, and manage content with a clean admin interface.
+        It allows you to showcase your work, receive client selections, and manage all content through a clean admin interface.
       </p>
     </div>
   </div>
@@ -172,8 +203,8 @@
     <div>
       <h2>Carefully Designed</h2>
       <p>
-        Every detail is hand-crafted: modern typography, smooth animations, and a professional golden accent tone.  
-        Fully optimized for both mobile and desktop screens.
+        Every detail is crafted with care — modern typography, soft shadows, smooth animations, and a golden accent palette.
+        The layout automatically adapts to mobile and desktop screens.
       </p>
     </div>
     <img src="assets/img/preview2.jpg" alt="design">
@@ -186,11 +217,12 @@
     <div>
       <h2>Features</h2>
       <ul>
-        <li>✔ Admin dashboard to manage posts, users, and comments</li>
-        <li>✔ AJAX likes & category filters</li>
-        <li>✔ Notifications when clients select images</li>
-        <li>✔ Support for YouTube, Vimeo, and local videos</li>
-        <li>✔ Fully responsive — built for phones first</li>
+        <li>Admin dashboard to manage posts, users, and comments</li>
+        <li>AJAX likes & category filters</li>
+        <li>Notifications when clients select artworks</li>
+        <li>Support for YouTube, Vimeo, and local videos</li>
+        <li>Responsive — built for phones first</li>
+        <li>Multi-language ready (Arabic, English, Spanish)</li>
       </ul>
     </div>
   </div>
@@ -200,13 +232,13 @@
   <h2>Live Demo</h2>
   <p>
     Visit demo: <a href="#" onclick="return false;">https://gmet3-demo.com</a><br/>
-    Username: test • Password: 123456<br/>
-    Q2A Thread: <a href="#" onclick="return false;">(coming soon)</a>
+    Username: <b>test</b> — Password: <b>123456</b><br/>
+    Need a copy? <a href="https://paypal.me/abdelbank" target="_blank" style="color:#cba527;font-weight:600">Pay & Request Access</a>
   </p>
 </section>
 
 <footer>
-  © 2025 Gmet3 / PicShot — All Rights Reserved.
+  © 2025 <b>Gmet3 / PicShot</b> — All Rights Reserved.
 </footer>
 
 </body>
