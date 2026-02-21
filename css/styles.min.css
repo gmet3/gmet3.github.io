@@ -2195,3 +2195,88 @@ body.black-friday .csMuffin .carousel-slide-wrapper {
   .mySwiper .swiper-slide a{ max-width: 94vw; }
 }
 </style>
+
+/* ===== Lightbox (smaller, centered) ===== */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: none;
+}
+.lightbox.is-open{ display:block; }
+
+.lightbox-backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.75);
+}
+
+.lightbox-content{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 20px;
+}
+
+.lightbox-content img{
+  max-width: min(900px, 92vw);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+  background:#111;
+}
+
+.lightbox-close{
+  position:absolute;
+  top: 14px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border:0;
+  border-radius: 10px;
+  font-size: 28px;
+  line-height: 42px;
+  cursor:pointer;
+  background: rgba(255,255,255,.15);
+  color:#fff;
+}
+.lightbox-close:hover{ background: rgba(255,255,255,.25); }
+
+/* Zoom badge */
+.zoomBadge{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  background: rgba(0,0,0,.6);
+  color:#fff;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+/* Better slide look */
+.better-slider .swiper-slide{
+  display:flex;
+  justify-content:center;
+}
+.better-slider .swiper-slide a{
+  position:relative;
+  display:block;
+  border-radius: 12px;
+  overflow:hidden;
+}
+.better-slider .swiper-slide img{
+  display:block;
+  width: 100%;
+  max-width: 780px;
+  height:auto;
+  transform: scale(1);
+  transition: transform .25s ease;
+}
+.better-slider .swiper-slide a:hover img{
+  transform: scale(1.03);
+}
