@@ -1959,101 +1959,119 @@ body.black-friday .csMuffin .carousel-slide-wrapper {
 }
 
 
-/* ===== GMET3 Product Page (Minimal Clean) ===== */
+/* =================================
+   GMET3 Product Page — Card Layout
+   ================================= */
 
-/* Centered wide layout بدون خلفيات */
+/* center layout */
 .product-page .contentSqueezer{
-  max-width: 980px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 22px;
+  padding: 0 24px;
 }
 
-.product-page .body-content{
-  margin: 2.2rem 0;
-}
-
+/* card style for sections */
 .product-page .splitContent{
-  margin: 2.2rem 0;
-  padding: 0;
-  background: transparent !important;
-  border-radius: 0;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 3rem;
+  margin: 2.5rem 0;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  transition: all .25s ease;
 }
 
-/* two columns but lighter spacing */
+/* hover effect */
+.product-page .splitContent:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+}
+
+/* remove old gray backgrounds */
+.product-page .splitContent:nth-child(even){
+  background:#fff !important;
+}
+
+/* columns */
 .product-page .splitLeft,
 .product-page .splitRight{
   width: 50%;
-  padding: 0 18px;
+  padding: 0 1.5rem;
 }
 
-/* text better readability */
+/* text area */
 .product-page .splitContent-description{
-  max-width: 560px;
-  margin: 0;
+  max-width: 520px;
 }
 
+/* titles */
 .product-page .split-title{
-  margin-bottom: .8rem;
+  font-size: 28px;
+  margin-bottom: 1rem;
 }
 
-/* images: keep original size feeling */
+/* images inside cards */
 .product-page .splitContent-image{
-  padding-bottom: 58%;
+  padding-bottom: 65%;
   border-radius: 16px;
   overflow: hidden;
 }
 
 .product-page .splitContent-image img{
-  width: 110%;
+  width: 115%;
   max-width: none !important;
 }
 
-/* vertical image smaller */
+/* vertical image */
 .product-page .split-fullImage.vertical-imageDisplay img{
-  max-height: 340px;
+  max-height: 360px;
   border-radius: 16px;
 }
 
-/* banner: closer to center */
-.product-page .bannerInfo{
-  left: 3rem;
-  max-width: 560px;
-}
-
-/* notice: slim + clean */
+/* notice bar style */
 .product-page .notice{
-  max-width: 980px;
-  margin: 1.2rem auto 0;
-  border-radius: 10px;
+  max-width: 1100px;
+  margin: 1.5rem auto 0;
+  border-radius: 12px;
 }
 
-/* screenshots align with content */
+/* banner text better */
+.product-page .bannerInfo{
+  left: 4rem;
+  max-width: 520px;
+}
+
+/* screenshots align */
 .product-page #screenshots{
-  max-width: 980px;
-  margin: 4rem auto 0;
-  padding: 0 22px;
+  max-width: 1100px;
+  margin: 5rem auto 0;
+  padding: 0 24px;
 }
 
-/* Mobile */
+/* spacing between cards */
+.product-page .splitContent + .splitContent{
+  margin-top: 3rem;
+}
+
+/* ===== Mobile ===== */
 @media (max-width: 768px){
+
+  .product-page .splitContent{
+    padding: 2rem;
+  }
+
   .product-page .splitLeft,
   .product-page .splitRight{
     width: 100%;
     float: none;
     padding: 0;
   }
-  .product-page .splitContent{
-    margin: 1.8rem 0;
-  }
-  .product-page .splitContent-description{
-    max-width: 100%;
-    text-align: center;
-  }
+
   .product-page .splitContent-image{
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
+
   .product-page .bannerInfo{
-    left: 0;
-    padding: 0 18px;
+    left:0;
+    padding:0 18px;
   }
 }
