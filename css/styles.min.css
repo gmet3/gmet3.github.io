@@ -2280,30 +2280,35 @@ body.black-friday .csMuffin .carousel-slide-wrapper {
 .better-slider .swiper-slide a:hover img{
   transform: scale(1.03);
 }
-/* ===== Landing Abstract Background ===== */
+/* ===== Hero Background ===== */
 
-body {
+.body-header {
+  position: relative;
+  min-height: 600px;
+  padding: 80px 0;
+
+  /* gradient background */
   background: linear-gradient(
     135deg,
     #c86dd7 0%,
     #3023ae 50%,
     #0f2027 100%
   );
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
+
+  overflow: hidden;
 }
 
-/* wave effect */
-body::before {
+/* light wave effect */
+.body-header::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -20%;
-  left: -10%;
+  left: -20%;
   width: 140%;
   height: 140%;
+
   background: radial-gradient(
-      circle at 30% 50%,
+      circle at 30% 40%,
       rgba(255,255,255,0.15),
       transparent 40%
     ),
@@ -2312,23 +2317,31 @@ body::before {
       rgba(255,255,255,0.1),
       transparent 45%
     );
+
   filter: blur(60px);
-  z-index: -1;
+  z-index: 0;
 }
 
 /* dots mesh effect */
-body::after {
+.body-header::after {
   content: "";
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 60%;
+
   background-image: radial-gradient(
-    rgba(255,255,255,0.3) 1px,
+    rgba(255,255,255,0.4) 1px,
     transparent 1px
   );
+
   background-size: 6px 6px;
-  opacity: 0.2;
-  z-index: -1;
+  opacity: 0.15;
+}
+
+/* يجعل المحتوى فوق الخلفية */
+.streamProfileWrapper {
+  position: relative;
+  z-index: 2;
 }
