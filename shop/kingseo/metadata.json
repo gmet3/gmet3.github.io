@@ -1,18 +1,19 @@
 {
-	"name": "Report Master",
-	"uri": "https://rxchun.github.io/shop/report-master/",
-	"description": "Extends or Replaces Q2A’s default flag system with a customizable report system and user suspension tool.",
-	"version": "1.0",
-	"date": "2025-08-07",
-	
-	"released": "2025-08-07",
-	"dev_started": "2025-07-04",
-	"author": "Chun",
-	"author_uri": "https://rxchun.github.io/?ref=github-q2a-report-master",
-	"license": "Premium",
-	"update_uri": "https://rxchun.github.io/shop/report-master/metadata.json",
-	"max_q2a": "1.8.8",
-	"min_q2a": "1.8.8",
-	"min_php": "5.2",
-	"load_order": "after_db_init"
+  "name": "King SEO Booster",
+  "uri": "https://gmet3.github.io/shop/kingseo/",
+  "description": "Lightweight SEO optimization plugin for King Media: auto meta tags, XML sitemap, Open Graph, schema markup (JSON-LD), canonical URLs, and SEO-friendly settings — no core edits required.",
+  "version": "1.0",
+  "date": "2026-02-10",
+
+  "released": "2026-02-10",
+  "dev_started": "2026-02-01",
+  "author": "Gmet3",
+  "author_uri": "https://gmet3.github.io/",
+  "license": "Premium (ZIP + Support)",
+  "update_uri": "https://gmet3.github.io/shop/kingseo/metadata.json",
+
+  "max_q2a": "1.8.8",
+  "min_q2a": "1.8.8",
+  "min_php": "5.2",
+  "load_order": "after_db_init"
 }
