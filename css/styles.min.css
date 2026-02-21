@@ -2280,3 +2280,55 @@ body.black-friday .csMuffin .carousel-slide-wrapper {
 .better-slider .swiper-slide a:hover img{
   transform: scale(1.03);
 }
+/* ===== Landing Abstract Background ===== */
+
+body {
+  background: linear-gradient(
+    135deg,
+    #c86dd7 0%,
+    #3023ae 50%,
+    #0f2027 100%
+  );
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* wave effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(
+      circle at 30% 50%,
+      rgba(255,255,255,0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(255,255,255,0.1),
+      transparent 45%
+    );
+  filter: blur(60px);
+  z-index: -1;
+}
+
+/* dots mesh effect */
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background-image: radial-gradient(
+    rgba(255,255,255,0.3) 1px,
+    transparent 1px
+  );
+  background-size: 6px 6px;
+  opacity: 0.2;
+  z-index: -1;
+}
