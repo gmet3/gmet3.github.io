@@ -2075,7 +2075,7 @@ body.black-friday .csMuffin .carousel-slide-wrapper {
     padding:0 18px;
   }
 }
-<style>
+
 /* ===== Better Slider Look ===== */
 .better-slider{
   max-width: 1000px;
@@ -2194,7 +2194,7 @@ body.black-friday .csMuffin .carousel-slide-wrapper {
 @media(max-width:768px){
   .mySwiper .swiper-slide a{ max-width: 94vw; }
 }
-</style>
+
 
 /* ===== Lightbox (smaller, centered) ===== */
 .lightbox{
