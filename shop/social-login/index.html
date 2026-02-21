@@ -386,7 +386,70 @@ social,login system"/>
 		gtag('config', 'G-WGV1210G9S');
 	</script>
 </div>
+<script>
+  // Init Swiper
+  const swiper = new Swiper('.mySwiper', {
+    loop: true,
+    spaceBetween: 24,
+    centeredSlides: true,
+    slidesPerView: 1,
+    grabCursor: true,
+    speed: 550,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    keyboard: {
+      enabled: true
+    }
+  });
 
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeBtn = document.querySelector('.lightbox-close');
+
+  function openLightbox(src, alt){
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('show');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('noScroll');
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('show');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = '';
+    document.body.classList.remove('noScroll');
+  }
+
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('.lightbox-trigger');
+    if(a){
+      e.preventDefault();
+      const img = a.querySelector('img');
+      openLightbox(a.getAttribute('href'), img ? img.alt : '');
+      return;
+    }
+
+    // close if click backdrop or close button
+    if(e.target.classList.contains('lightbox-backdrop') || e.target.classList.contains('lightbox-close')){
+      closeLightbox();
+    }
+  });
+
+  // ESC to close
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && lightbox.classList.contains('show')){
+      closeLightbox();
+    }
+  });
+</script>
 </body>
 
 </html>
