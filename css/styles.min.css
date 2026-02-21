@@ -2341,3 +2341,6 @@ body.black-friday .csMuffin .carousel-slide-wrapper {
   color:#fff;
 }
 .body-header .spBio p{ opacity:.9; }
+.body-header{ min-height: 420px; }
+.body-header .heroFX{ position:absolute; inset:0; z-index:0; }
+.body-header .streamProfileWrapper{ position:relative; z-index:2; }
