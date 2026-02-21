@@ -55,6 +55,242 @@
 	}
 	</script>
 	
+	<script>
+(() => {
+  const canvas = document.getElementById('heroMesh');
+  if (!canvas) return;
+
+  // Respect reduced motion
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx = canvas.getContext('2d', { alpha: true });
+
+  // Tune these if you want more/less detail
+  const CFG = {
+    gridX: 26,
+    gridY: 16,
+    perspective: 520,
+    speed: 0.00115,
+    wobble: 18,
+    lineAlpha: 0.14,
+    triAlpha: 0.88,
+    dpiCap: 2
+  };
+
+  let w = 0, h = 0, dpr = 1;
+  let t0 = performance.now();
+  let mouse = { x: 0, y: 0, tx: 0, ty: 0 };  // target for smooth
+  let points = [];
+
+  function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
+
+  function resize() {
+    const r = canvas.getBoundingClientRect();
+    w = Math.max(1, Math.floor(r.width));
+    h = Math.max(1, Math.floor(r.height));
+    dpr = Math.min(CFG.dpiCap, window.devicePixelRatio || 1);
+
+    canvas.width  = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    buildGrid();
+  }
+
+  function buildGrid(){
+    points = [];
+    const gx = CFG.gridX, gy = CFG.gridY;
+    for (let y = 0; y <= gy; y++) {
+      for (let x = 0; x <= gx; x++) {
+        const px = (x / gx) * w;
+        const py = (y / gy) * h;
+        // random phase per point
+        points.push({
+          bx: px, by: py,
+          ph: Math.random() * Math.PI * 2,
+          ph2: Math.random() * Math.PI * 2
+        });
+      }
+    }
+  }
+
+  function idx(x, y){ return y * (CFG.gridX + 1) + x; }
+
+  // color palette similar to ThemeForest hero gradients
+  const C1 = [200,109,215]; // pink/purple
+  const C2 = [48, 35,174];  // deep violet/blue
+  const C3 = [15, 32, 39];  // dark
+
+  function mix(a,b,t){ return a + (b-a)*t; }
+  function rgb(c){ return `rgb(${c[0]|0},${c[1]|0},${c[2]|0})`; }
+
+  function colorFromZ(zNorm){
+    // zNorm ~ 0..1
+    // blend C1->C2 then to C3 slightly
+    const t = zNorm;
+    const mid = [
+      mix(C1[0], C2[0], t),
+      mix(C1[1], C2[1], t),
+      mix(C1[2], C2[2], t)
+    ];
+    const darken = clamp((t-0.55)*1.6, 0, 1);
+    return [
+      mix(mid[0], C3[0], darken),
+      mix(mid[1], C3[1], darken),
+      mix(mid[2], C3[2], darken)
+    ];
+  }
+
+  function project(x, y, z){
+    // simple perspective projection
+    const cx = w * 0.5, cy = h * 0.5;
+    const px = x - cx;
+    const py = y - cy;
+    const p = CFG.perspective / (CFG.perspective + z);
+    return { x: cx + px * p, y: cy + py * p, p };
+  }
+
+  function draw(now){
+    const dt = now - t0;
+    const time = now * CFG.speed;
+
+    // smooth mouse
+    mouse.x += (mouse.tx - mouse.x) * 0.08;
+    mouse.y += (mouse.ty - mouse.y) * 0.08;
+
+    // parallax amount
+    const mx = (mouse.x - 0.5) * 2;
+    const my = (mouse.y - 0.5) * 2;
+
+    ctx.clearRect(0,0,w,h);
+
+    // base gradient background
+    const g = ctx.createLinearGradient(0,0,w,h);
+    g.addColorStop(0, 'rgba(200,109,215,0.35)');
+    g.addColorStop(0.55, 'rgba(48,35,174,0.28)');
+    g.addColorStop(1, 'rgba(15,32,39,0.55)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,w,h);
+
+    const gx = CFG.gridX, gy = CFG.gridY;
+
+    // compute projected positions + z
+    const P = new Array(points.length);
+    let zMin = 1e9, zMax = -1e9;
+
+    for (let y = 0; y <= gy; y++){
+      for (let x = 0; x <= gx; x++){
+        const p0 = points[idx(x,y)];
+
+        // wave field (two sines) + mouse tilt -> 3D feel
+        const nx = (p0.bx / w) * 2 - 1;
+        const ny = (p0.by / h) * 2 - 1;
+
+        let z =
+          Math.sin(time*2.2 + p0.ph + nx*2.0) * CFG.wobble +
+          Math.cos(time*1.7 + p0.ph2 + ny*2.4) * (CFG.wobble*0.85);
+
+        // "tilt" with mouse
+        z += (mx*nx + my*ny) * 32;
+
+        // extra slight depth towards bottom
+        z += (ny+1) * 10;
+
+        zMin = Math.min(zMin, z);
+        zMax = Math.max(zMax, z);
+
+        // subtle parallax shift
+        const px = p0.bx + mx * 18;
+        const py = p0.by + my * 12;
+
+        P[idx(x,y)] = { ...project(px,py,z), z };
+      }
+    }
+
+    // draw triangles filled with color based on depth
+    ctx.globalCompositeOperation = 'lighter';
+
+    for (let y = 0; y < gy; y++){
+      for (let x = 0; x < gx; x++){
+        const pA = P[idx(x,y)];
+        const pB = P[idx(x+1,y)];
+        const pC = P[idx(x,y+1)];
+        const pD = P[idx(x+1,y+1)];
+
+        // two triangles: A-B-D and A-D-C
+        fillTri(pA,pB,pD, zMin,zMax);
+        fillTri(pA,pD,pC, zMin,zMax);
+      }
+    }
+
+    // draw mesh lines (subtle)
+    ctx.globalCompositeOperation = 'screen';
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = `rgba(255,255,255,${CFG.lineAlpha})`;
+
+    for (let y = 0; y <= gy; y++){
+      ctx.beginPath();
+      for (let x = 0; x <= gx; x++){
+        const p = P[idx(x,y)];
+        if (x === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      }
+      ctx.stroke();
+    }
+
+    for (let x = 0; x <= gx; x++){
+      ctx.beginPath();
+      for (let y = 0; y <= gy; y++){
+        const p = P[idx(x,y)];
+        if (y === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      }
+      ctx.stroke();
+    }
+
+    ctx.globalCompositeOperation = 'source-over';
+
+    if (!reduceMotion) requestAnimationFrame(draw);
+  }
+
+  function fillTri(a,b,c, zMin,zMax){
+    const zAvg = (a.z + b.z + c.z) / 3;
+    const zN = (zAvg - zMin) / Math.max(1e-6, (zMax - zMin));
+    const col = colorFromZ(zN);
+
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.lineTo(c.x, c.y);
+    ctx.closePath();
+
+    ctx.fillStyle = `rgba(${col[0]|0},${col[1]|0},${col[2]|0},${CFG.triAlpha})`;
+    ctx.fill();
+  }
+
+  function onMove(e){
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    mouse.tx = clamp(x,0,1);
+    mouse.ty = clamp(y,0,1);
+  }
+
+  window.addEventListener('resize', resize, { passive: true });
+  window.addEventListener('mousemove', onMove, { passive: true });
+
+  // init
+  resize();
+  mouse.tx = 0.55; mouse.ty = 0.45;
+  mouse.x = mouse.tx; mouse.y = mouse.ty;
+
+  if (!reduceMotion) requestAnimationFrame(draw);
+  else {
+    // draw one frame only
+    draw(performance.now());
+  }
+})();
+</script>
+	
 </head>
 
 <body id="body" class="page-home">
@@ -108,6 +344,12 @@
 		</header>
 		
 		<div class="body-header">
+		<!-- Hero animated mesh background -->
+<div class="heroFX" aria-hidden="true">
+  <canvas id="heroMesh"></canvas>
+  <div class="heroDots"></div>
+  <div class="heroVignette"></div>
+</div>
 			
 			<div class="streamProfile">
 				<div class="streamProfileWrapper">
