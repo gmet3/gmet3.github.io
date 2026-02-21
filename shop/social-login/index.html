@@ -289,31 +289,60 @@ social,login system"/>
 				</div> <!-- Content Squeezer -->
 				
 				<!-- Screenshots -->
-				<div id="screenshots" class="text-center">
-					
-					<h1 class="split-title">Screenshots</h1>
-					
-					<!-- Image Slider -->
-					<div class="slider-container">
-						<div class="slider-wrapper">
-							<div class="swiper-container">
-								<div class="swiper-wrapper">
-									<div class="acroppScreenshots textLoadScreenshots">Click to load Screenshots</div>
-								</div>
-									
-								<!-- Add Pagination -->
-								<div class="swiper-pagination"></div>
-								<!-- Add Arrows -->
-								<div class="swiper-button-next"></div>
-								<div class="swiper-button-prev"></div>
-							</div>
-						</div>
-					</div>
+<div id="screenshots" class="text-center">
 
-				</div>
-				
-			</div>
-		</div>
+  <h1 class="split-title">Screenshots</h1>
+
+  <div class="slider-container better-slider">
+    <div class="slider-wrapper">
+      <div class="swiper-container mySwiper">
+        <div class="swiper-wrapper">
+
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <a class="lightbox-trigger" href="screenshots/social-login-1.png">
+              <img src="screenshots/social-login-1.png" alt="Social Login Screenshot 1">
+              <span class="zoomBadge">Zoom</span>
+            </a>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <a class="lightbox-trigger" href="screenshots/social-login-2.png">
+              <img src="screenshots/social-login-2.png" alt="Social Login Screenshot 2">
+              <span class="zoomBadge">Zoom</span>
+            </a>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <a class="lightbox-trigger" href="screenshots/social-login-3.png">
+              <img src="screenshots/social-login-3.png" alt="Social Login Screenshot 3">
+              <span class="zoomBadge">Zoom</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- controls -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop"></div>
+  <button class="lightbox-close" aria-label="Close">×</button>
+
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+</div>
 	
 	</main> <!-- body-content -->
 
