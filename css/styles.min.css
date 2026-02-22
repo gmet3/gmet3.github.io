@@ -1547,7 +1547,24 @@ img.lazyimg1[data-src] {
 }
 .lightbox-close:hover{ background: rgba(255,255,255,.25); }
 
+/* ----------------------
+   HERO — STYLE UPDATE
+---------------------- */
+.body-header{
+  position: relative;
+  overflow: hidden;
 
+  /* اللون الرمادي الفاتح */
+  background: #f2f4f7;   /* تقدر تبدلو */
+
+  /* الحواف المستديرة */
+  border-radius: 20px;
+
+  /* مسافة من الجوانب باش تبان الحواف */
+  margin: 20px;
+
+  min-height: 420px;
+}
 
 .body-header .heroFX{
   position: absolute;
