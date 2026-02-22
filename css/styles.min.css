@@ -1547,15 +1547,7 @@ img.lazyimg1[data-src] {
 }
 .lightbox-close:hover{ background: rgba(255,255,255,.25); }
 
-/* ----------------------
-   HERO — ANIMATED 3D MESH BG (CSS LAYERS)
----------------------- */
-.body-header{
-  position: relative;
-  overflow: hidden;
-  background: #0b1220; /* fallback */
-  min-height: 420px;
-}
+
 
 .body-header .heroFX{
   position: absolute;
