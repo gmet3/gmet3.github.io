@@ -1728,34 +1728,45 @@ img.lazyimg1[data-src] {
 @media (min-width: 550px) and (max-width: 425px) {
   .bannerInfo { max-width: 80vw; }
 }
-/* HERO FIX - force full size */
-.body-header{
-  position: relative;
-  overflow: hidden;
-  min-height: 420px;
+/* ===============================
+   FULL SCREEN MESH BACKGROUND
+   =============================== */
+
+/* تأكد الصفحة تملأ الشاشة */
+html, body{
+  height: 100%;
+  margin: 0;
 }
 
-/* لازم يكون له ارتفاع فعلي */
-.body-header .heroFX{
+/* خلفية أساسية */
+body{
+  position: relative;
+  min-height: 100vh;
+  background: #0b1220;
+}
+
+/* container للخلفية */
+.heroFX{
+  position: fixed;        /* تغطي الشاشة دائماً */
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;            /* خلف الموقع */
+  pointer-events: none;
+}
+
+/* canvas يغطي كامل الشاشة */
+#heroMesh{
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* canvas يغطي كامل الـheroFX */
-#heroMesh{
-  position: absolute;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
   display: block;
 }
 
-/* المحتوى فوق الخلفية */
-.body-header .streamProfileWrapper{
+/* محتوى الموقع فوق الخلفية */
+.body-container,
+.streamProfileWrapper{
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
