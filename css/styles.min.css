@@ -1554,16 +1554,21 @@ img.lazyimg1[data-src] {
   position: relative;
   overflow: hidden;
 
-  /* اللون الرمادي الفاتح */
-  background: #a19b9b;   /* تقدر تبدلو */
-
-  /* الحواف المستديرة */
+  /* الشكل */
+  background: #e5e7eb;
   border-radius: 20px;
 
-  /* مسافة من الجوانب باش تبان الحواف */
-  margin: 20px;
+  /* حجم المربع */
+  width: 500px;
+  aspect-ratio: 1 / 1;
 
-  min-height: 320px;
+  /* توسيط */
+  margin: 40px auto;
+
+  /* وسط المحتوى داخله */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .body-header .heroFX{
